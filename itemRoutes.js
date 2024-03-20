@@ -17,10 +17,14 @@ router.get("/", function (req, res) {
 router.post("/", function (req, res) {
   if (req.body === undefined) throw new BadRequestError('Item required.');
 
+  if(req.body.name === undefined || req.body.price === undefined) {
+    throw new BadRequestError('Missing item information.');
+  }
+
   const item = req.body;
   db.items.push(item);
 
-  return res.json({ add: item });
+  return res.status(201).json({ added: item });
 });
 
 /** GET /items/:name: return single item */
