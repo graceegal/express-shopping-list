@@ -32,7 +32,7 @@ router.get("/:name", function (req, res) {
   const item = db.items.find(item => item.name === req.params.name);
 
   if (item === undefined) {
-    throw new NotFoundError(`${req.params.name} not found.`);
+    throw new NotFoundError();
   }
 
   return res.json(item);
@@ -44,7 +44,7 @@ router.patch("/:name", function (req, res) {
   const item = db.items.find(item => item.name === req.params.name);
 
   if (item === undefined) {
-    throw new NotFoundError(`${req.params.name} not found.`);
+    throw new NotFoundError();
   }
 
   item.name = req.body.name || item.name;
@@ -61,7 +61,7 @@ router.delete("/:name", function (req, res) {
   const idx = db.items.findIndex(item => item.name === req.params.name);
 
   if (idx === -1) {
-    throw new NotFoundError(`${req.params.name} not found.`);
+    throw new NotFoundError();
   }
 
   db.items.splice(idx, 1);
