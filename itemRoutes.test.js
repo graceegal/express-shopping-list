@@ -97,7 +97,7 @@ describe("GET /items/:name", function() {
 /** PATCH /items/:name: - take json with item info. return updated info:
  * `{name, price}` */
 
-describe("GET /items/:name", function() {
+describe("PATCH /items/:name", function() {
   it("Update an item successfully", async function() {
     const resp = await request(app)
       .patch(`/items/${item.name}`)
